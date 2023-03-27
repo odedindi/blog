@@ -35,6 +35,5 @@
   },
   "jest": {
     "preset": "scripts/jest/node"
-  },
-  "dependencies": {}
+  }
 }
