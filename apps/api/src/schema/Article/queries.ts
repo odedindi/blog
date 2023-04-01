@@ -164,17 +164,13 @@ builder.queryType({
           ],
         };
 
-        const totalCount = await db.article.count({
-          where: filter,
-        });
+        const totalCount = await db.article.count({ where: filter });
 
         if (incomingCursor) {
           results = await db.article.findMany({
             take: 9,
             skip: 1,
-            cursor: {
-              id: incomingCursor,
-            },
+            cursor: { id: incomingCursor },
             where: filter,
             include: { author: true },
             orderBy: {

@@ -3,6 +3,17 @@ query SearchArticles($input: ArticlesInput) {
     results {
       id
       title
+      preview
+      content
+      author {
+        id
+        name
+        avatar
+        email
+      }
+      lead
+      createdAt
+      updatedAt
     }
   }
 }

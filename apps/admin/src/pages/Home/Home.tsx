@@ -3,7 +3,9 @@ import { Button } from 'ui';
 
 function Home() {
   const { data } = useSearchArticlesQuery();
-
+  const articles = data?.articles;
+  console.log('articles', articles);
+  const flatArticles = articles?.results.flatMap(({}) => {})
   return (
     <div>
       <h1>Admin</h1>

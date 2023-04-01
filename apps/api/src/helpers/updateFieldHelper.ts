@@ -1,5 +1,3 @@
-const updateFieldHelper = (value: any) => {
+export default function updateFieldHelper(value: unknown) {
   return value !== null ? value : undefined;
-};
-
-export default updateFieldHelper;
+}

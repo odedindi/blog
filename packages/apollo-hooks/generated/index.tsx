@@ -28,7 +28,6 @@ export type Article = {
   isPublished: Scalars['Boolean'];
   lead: Scalars['String'];
   preview: Scalars['String'];
-  tags: Array<Scalars['String']>;
   title: Scalars['String'];
   updatedAt: Scalars['Date'];
 };
@@ -54,7 +53,6 @@ export type CreateArticleInput = {
   content: Scalars['String'];
   lead: Scalars['String'];
   preview: Scalars['String'];
-  tags: Array<Scalars['String']>;
   title: Scalars['String'];
 };
 
@@ -64,7 +62,6 @@ export type Mutation = {
   deleteArticle: Article;
   signUp: User;
   updateArticle: Article;
-  uploadImage: Scalars['String'];
 };
 
 
@@ -89,11 +86,6 @@ export type MutationSignUpArgs = {
 export type MutationUpdateArticleArgs = {
   articleId: Scalars['String'];
   input: CreateArticleInput;
-};
-
-
-export type MutationUploadImageArgs = {
-  path: Scalars['String'];
 };
 
 export type Query = {
@@ -152,7 +144,7 @@ export type SearchArticlesQueryVariables = Exact<{
 }>;
 
 
-export type SearchArticlesQuery = { __typename?: 'Query', articles: { __typename?: 'ArticlesResponse', results: Array<{ __typename?: 'Article', id: string, title: string }> } };
+export type SearchArticlesQuery = { __typename?: 'Query', articles: { __typename?: 'ArticlesResponse', results: Array<{ __typename?: 'Article', id: string, title: string, preview: string, content: string, lead: string, createdAt: any, updatedAt: any, author: { __typename?: 'User', id: string, name: string, avatar?: string | null, email: string } }> } };
 
 
 export const SearchArticlesDocument = gql`
@@ -161,6 +153,17 @@ export const SearchArticlesDocument = gql`
     results {
       id
       title
+      preview
+      content
+      author {
+        id
+        name
+        avatar
+        email
+      }
+      lead
+      createdAt
+      updatedAt
     }
   }
 }
